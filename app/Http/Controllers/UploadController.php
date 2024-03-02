@@ -21,6 +21,7 @@ class UploadController extends Controller
         $fotoFile->move(public_path('/assets'), $fotoName);
 
         $dataFoto = [
+            'album_id'  =>$request->album,
             'url'               => $fotoName,
             'judul_foto'        => $request->judul_foto,
             'deskripsi_foto'    => $request->deskripsi_foto,

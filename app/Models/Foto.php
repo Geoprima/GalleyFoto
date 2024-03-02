@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Like;
 
 use App\Models\User;
+use App\Models\Album;
 use App\Models\Komentar;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,6 +18,7 @@ class Foto extends Model
         'deskripsi_foto',
         'url',
         'user_id',
+        'album_id'
     ];
     protected $table = 'fotos';
 
@@ -24,6 +26,12 @@ class Foto extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+     
+    //nilai balik ke album
+    public function albums()
+    {
+        return $this->belongsTo(Album::class, 'album_id', 'id');
     }
 
 

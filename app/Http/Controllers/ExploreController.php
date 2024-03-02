@@ -11,7 +11,12 @@ use Illuminate\Http\Request;
 class ExploreController extends Controller
 {
     public function getdata(Request $request){
-        $explore = Foto::with('likefotos')->orderBy('id', 'DESC')->withCount(['likefotos', 'comments'])->paginate(4);
+        if($request->cari !== 'null'){
+        $explore = Foto::with('likefotos')->where('judul_foto','like','%'.$request->cari.'%')->orderBy('id', 'DESC')->withCount(['likefotos', 'comments'])->paginate(4);    
+        } else{
+            
+            $explore = Foto::with('likefotos')->orderBy('id', 'DESC')->withCount(['likefotos', 'comments'])->paginate(4);
+        }
         return response()->json([
             'data' =>$explore,
             'statuscode' => 200,

@@ -34,7 +34,7 @@ function loadMoreData(paginate){
             console.log(e)
             e.data.data.map((x)=>{
                 var hasilPencarian = x.likefotos.filter(function(hasil){
-                    return hasil.id_user === e.idUser
+                     return hasil.id_user === e.idUser
                 })
                 if(hasilPencarian.length <= 0){
                     userlike=0;
@@ -46,7 +46,7 @@ function loadMoreData(paginate){
                     judul: x.judul_foto,
                     deskripsi: x.deskripsi_foto ,
                     foto: x.url,
-                    tanggal: x.created_at,
+                    tanggal: moment(x.created_at).format('DD/MM/YYYY'),
                     jml_comment: x.comments_count,
                     jml_like: x.likefotos_count,
                     idUserLike: userlike,
@@ -90,7 +90,7 @@ const getExplore =()=>{
                         <div>
                             <span class="bi bi-chat-left-text"></span>
                             <small>${x.jml_comment}</small>
-                            <span class="bi ${x.idUserLike === x.useractive ? 'bi-heart-fill text-red-800': 'bi-heart'}" onclick="likes(this, ${x.id})"></span>
+                            <span class="bi ${x.idUserLike === x.useractive ? 'bi-heart-fill text-red-700': 'bi-heart'}" onclick="likes(this, ${x.id})"></span>
                             <small>${x.jml_like}</small>
                         </div>
                     </div>

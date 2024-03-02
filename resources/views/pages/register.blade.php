@@ -39,7 +39,7 @@
                 @error('password')
                     <small class="italic text-red-800">{{ $message }}</small>
                 @enderror
-                <button type="submit" class="py-1 mt-4 text-white rounded-full bg-green-500">REGISTER</button>
+                <button type="submit" class="py-1 mt-4 text-white rounded-full bg-blue-500">REGISTER</button>
                 <h5 class="mx-auto mt-4 text-xs">Sudah punya akun? <a href="/login" class="text-blue-500">Log in</a></h5>
             </div>
         </div>

@@ -30,7 +30,7 @@ function loadMoreData(paginate){
                     judul: x.judul_foto,
                     deskripsi: x.deskripsi_foto,
                     foto: x.url,
-                    tanggal: x.created_at,
+                    tanggal: moment(x.created_at).format('DD/MM/YYYY'),
                     jml_comment: x.comments_count,
                     jml_like: x.likefotos_count,
                     idUserLike: userlike,
@@ -115,7 +115,7 @@ $.ajax({
         $('#fotodetail').prop('src','/assets/'+ res.dataDetailFoto.url)
         $('#judulfoto').html(res.dataDetailFoto.judul_foto)
         $('#deskripsifoto').html(res.dataDetailFoto.deskripsi_foto)
-        $('#username').html(res.dataDetailFoto.user.nama_lengkap)
+        $('#username').html(res.dataDetailFoto.user.username)
         $('#username').prop('href', '/other-pin/'+res.dataDetailFoto.user.id)
         ambilKomentar()
     },
@@ -134,7 +134,7 @@ function ambilKomentar(){
             res.data.map((x)=>{
                 let datacomentar = {
                     idUser: x.user.id,
-                    pengirim: x.user.nama_lengkap,
+                    pengirim: x.user.username,
                     waktu: x.created_at,
                     isikomentar: x.isi_komentar,
                     potopengirim: x.user.picture

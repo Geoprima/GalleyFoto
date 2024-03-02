@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PinController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewController;
+use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\ExploreController;
 
@@ -51,6 +53,18 @@ Route::middleware('auth')->group(function(){
     Route::get('/getdataotherpinexplore/', [PinController::class, 'getdata']);
     Route::get('/likefotos', [PinController::class, 'likefoto']);
 
+    Route::get('/ubahpassword', [ViewController::class, 'ubahpassword']);
+    Route::post('/update-password', [UserController::class, 'ubahpassword']);
+
+    Route::get('/album', [ViewController::class, 'album']);
+    Route::post('/buat-album', [AlbumController::class, 'storeAlbum']);
+    Route::get('/detailalbum/{id}', [AlbumController::class, 'detail']);
+    Route::get('/delete/{id}', [AlbumController::class, 'hapusalbum']);
+    Route::get('/buatalbum', function(){
+        $user = auth()->user();
+        return view('pages.buatalbum', compact ('user'));
+    });
+
 
     Route::get('/upload', [ViewController::class, 'upload']);
     Route::post('/upload/store', [UploadController::class, 'storeFoto']);
@@ -59,6 +73,18 @@ Route::middleware('auth')->group(function(){
     Route::get('/logout', [UserController::class, 'logout']);
 
     Route::get('/ubahprofile', [ViewController::class, 'ubahprofile']);
+    Route::post('/update', [UserController::class, 'update']);
+
+    Route::get('/edit/{id}', [ViewController::class, 'editfoto']);
+    Route::post('/edit-postingan/{id}', [ProfilController::class, 'editpostingan']);
+    Route::get('/hapus/{id}', [ProfilController::class, 'hapuspostingan']);
+
+    Route::get('/profil', function (){
+        $user=auth()->user();
+        return view ('page.profil', compact ('user'));
+    });
+    Route::get('/dataprofile', [ProfilController::class, 'getdataprofile']);
+    route::get('/getdataprofile', [ProfilController::class, 'getdata']);
 
 
  

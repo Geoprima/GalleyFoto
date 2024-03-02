@@ -49,7 +49,7 @@
                         <div class="w-3/4">
                             <input type="text" name="textkomentar" id="" class="w-full px-2 py-1 rounded-full border-slate-500">
                         </div>
-                        <button class="px-4 rounded-full bg-green-500" onclick="kirimkomentar()"><span class="text-white bi bi-send"></span></button>
+                        <button class="px-4 rounded-full bg-blue-500" onclick="kirimkomentar()"><span class="text-white bi bi-send"></span></button>
                     </div>
                 </div>
             </div>
@@ -61,4 +61,5 @@
 @endsection
 @push('footerjsexternal')
     <script src="/javascript/exploredetail.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 @endpush

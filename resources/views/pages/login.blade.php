@@ -28,7 +28,7 @@
                 <input type="text" name="email" class="py-1 rounded-md text-slate-700">
                 <h4 class="mt-3">Password</h4>
                 <input type="password" name="password" class="py-1 rounded-md text-slate-700">
-                <button type="submit" class="py-1 mt-4 text-center text-white rounded-full bg-green-500">Login</button>
+                <button type="submit" class="py-1 mt-4 text-center text-white rounded-full bg-blue-500">Login</button>
                 <h5 class="mx-auto mt-4 text-xs">Belum punya akun, silahkan daftar <a href="/register" class="text-blue-500">disini.!</a></h5>
             </div>
         </div>

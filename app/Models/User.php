@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Foto;
 use App\Models\Like;
 use App\Models\Komentar;
+use App\Models\Trigerlogin;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -44,6 +45,10 @@ class User extends Authenticatable
     public function likefotos()
     {
         return $this->hasMany(Like::class, 'user_id', 'id');
+    }
+    public function trigerlogin()
+    {
+        return $this->hasMany(Trigerlogin::class, 'id_user', 'id');
     }
 
     /**

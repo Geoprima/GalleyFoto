@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama_album');
             $table->string('deskripsi');
+            $table->string('foto');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });

@@ -9,8 +9,16 @@ $(window).scroll(function(){
 })
 
 function loadMoreData(paginate){
+    var urlnya = window.location.href.split("?")[1];
+    var parameter = new URLSearchParams(urlnya);
+    var cariValue = parameter.get ('cari')
+    if (cariValue == 'null'){
+        url = window.location.origin +'/getDataExplore/'+ '?page='+paginate;
+    } else{
+        url = window.location.origin +'/getDataExplore?cari='+ cariValue + '&page='+paginate
+    }
     $.ajax({
-        url: window.location.origin +'/getDataExplore/'+ '?page='+paginate,
+        url: url,
         type: "GET",
         dataType: "JSON",
         success: function(e){
@@ -29,7 +37,7 @@ function loadMoreData(paginate){
                     judul: x.judul_foto,
                     deskripsi: x.deskripsi_foto,
                     foto: x.url,
-                    tanggal: x.created_at,
+                    tanggal: moment(x.created_at).format('DD/MM/YYYY'),
                     jml_comment: x.comments_count,
                     jml_like: x.likefotos_count,
                     idUserLike: userlike,
@@ -72,7 +80,7 @@ const getExplore =()=>{
                         </div>
                         <div>
                             <small>${x.jml_comment}</small>
-                            <span class="bi bi-chat-left-text"></span>
+                           <a href="/explore-detail/${x.id}" <span class="bi bi-chat-left-text"></span></a>
                             <small>${x.jml_like}</small>
                             <span class="bi ${x.idUserLike === x.useractive ? 'bi-heart-fill text-red-500': 'bi-heart'}" onclick="likes(this, ${x.id})"></span>
                         </div>

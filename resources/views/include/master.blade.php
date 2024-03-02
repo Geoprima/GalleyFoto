@@ -36,11 +36,13 @@
         <div class="flex flex-wrap items-center justify-center max-w-screen-xl p-4 mx-auto">
             <a href="/explore" class="mr-4">EXPLORE</a>
             <a href="/upload" class="mr-4">UPLOAD</a>
+            <form action="/explore" method="get">
 
-            <input type="text" class="px-4 py-1 rounded-full mr-4" placeholder="Search ...">
+            <input type="text" class="px-4 py-1 rounded-full mr-4" placeholder="Search ..." name="cari">
+    </form>
 
             <div class="flex items-center space-x-1 md:order-2 md:space-x-0 rtl:space-x-reverse">
-                <img src="/assets/users.jpg" alt="" class="w-10 h-10 rounded-full" data-dropdown-toggle="user-dropdown-menu">
+                <img src="{{asset('/assets/'.$user->picture)}}" alt="" class="w-10 h-10 rounded-full" data-dropdown-toggle="user-dropdown-menu">
                 <!-- Drop Down -->
                 <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow "
                     id="user-dropdown-menu">
@@ -55,7 +57,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="album.html"
+                            <a href="/album"
                                 class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                 role="menuitem">
                                 <div class="inline-flex items-center">
@@ -64,7 +66,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/ubahpassword.html"
+                            <a href="/ubahpassword"
                                 class="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                                 role="menuitem">
                                 <div class="inline-flex items-center">
@@ -89,6 +91,7 @@
     </nav>
     @yield('content')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
+    <script src="{{ asset('javascript/preview-img.js')}}"></script>
 </body>
 @stack('footerjsexternal')
 </html>
